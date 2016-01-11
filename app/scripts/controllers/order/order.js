@@ -16,7 +16,7 @@ shopbackApp.controller('OrderController', function ($scope, ConstantService, Ord
 	$scope.condition = {};
 	
 	$scope.search2Accept = function(){
-		OrderService.listWithCondition(0, 10, OrderStatusService.PAID_CODE)
+		OrderService.listWithCondition($scope.mid, 0, 10, OrderStatusService.PAID_CODE)
 		.success(function(data){
 			$scope.orders = data.body;
 		});
@@ -36,7 +36,7 @@ shopbackApp.controller('OrderController', function ($scope, ConstantService, Ord
 	};
 
 	$scope.searchDelivering = function(){
-		OrderService.listWithCondition(0, 10, OrderStatusService.ACCEPT_CODE)
+		OrderService.listWithCondition($scope.mid, 0, 10, OrderStatusService.ACCEPT_CODE)
 		.success(function(data){
 			if(data.ok){
 				$scope.orders = data.body;
@@ -65,7 +65,7 @@ shopbackApp.controller('OrderController', function ($scope, ConstantService, Ord
 	};
 
 	$scope.searchDelivered = function(){
-		OrderService.listWithCondition(0, 10, OrderStatusService.DELIVERED_CODE)
+		OrderService.listWithCondition($scope.mid, 0, 10, OrderStatusService.DELIVERED_CODE)
 		.success(function(data){
 			$scope.orders = data.body;
 		});

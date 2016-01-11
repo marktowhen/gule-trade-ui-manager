@@ -9,23 +9,28 @@
  */
 shopbackApp.controller('OrderListController', function ($scope, ConstantService, OrderService, GoodsOperationService, OrderStatusService) {
 	
+	GoodsOperationService.merchantlist().success(function(data){
+        $scope.merchantlist =data.body;
+    });
+
 	$scope.gname = '';
 	$scope.uname = '';
 	$scope.fromdate = '';
 	$scope.enddate = '';
 	$scope.orderno = '';
+	$scope.mid = '';
 
 	$scope.search = function(){
 		$scope.fromdate = $("#fromtime").val();
 		$scope.enddate = $("#endtime").val();
-		OrderService.listWithCondition(0, 10, $scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
+		OrderService.listWithCondition($scope.mid, 0, 10, $scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
 		.success(function(data){
 			$scope.orders = data.body;
 			$scope.hasData = ($scope.orders && $scope.orders.length > 0);
 			currentpage =  $scope.orders ? $scope.orders.length : 0;
             $scope.hasMore = (currentpage == 10);
 		});
-		OrderService.count($scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
+		OrderService.count($scope.mid, $scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
 		.success(function(data){
 			$scope.count = data.body;
 		});
@@ -34,7 +39,7 @@ shopbackApp.controller('OrderListController', function ($scope, ConstantService,
 	var currentpage = 0;
 	$scope.hasMore = false;
     $scope.listMore = function(){
-        OrderService.listWithCondition(currentpage, 10, $scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
+        OrderService.listWithCondition($scope.mid, currentpage, 10, $scope.currentstatus.code, $scope.orderno, $scope.gname, $scope.uname, '', $scope.fromdate, $scope.enddate)
 		.success(function(data){
             if(data.ok){
                 for (var i = 0; i <data.body.length; i++) {

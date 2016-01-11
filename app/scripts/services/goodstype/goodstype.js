@@ -29,7 +29,7 @@ shopbackApp.service('GoodsTypeService', function($http,$location,$state,$resourc
          					alert("添加类别异常....."+response.message);
          				}
          			}).error(function(response){
-						alert("添加类别失败:"+response);
+						alert("网络异常,稍后重试.");
 					});
       };
 
@@ -46,7 +46,7 @@ shopbackApp.service('GoodsTypeService', function($http,$location,$state,$resourc
 	         					alert("修改类别异常....."+response.message);
 	         				}
 	         			}).error(function(response){
-							alert("修改类别失败:"+response);
+							alert("网络异常,稍后重试.");
 						});
         };
 
@@ -62,7 +62,7 @@ shopbackApp.service('GoodsTypeService', function($http,$location,$state,$resourc
                     alert("删除类别异常....."+response.message);
                   }
                 }).error(function(response){
-              alert("删除类别失败:"+response);
+            alert("网络异常,稍后重试.");
             });
         };
 

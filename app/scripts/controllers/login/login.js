@@ -46,7 +46,7 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
                     
                 }else{
                     $cookies.remove(LOGIN_KEY );
-                    $cookies.put(LOGIN_REMEMBER, 0);
+                    $cookies.put(LOGIN_REMEMBER, 0);                                                                                                                                                                      
                 }
 
                 $rootScope.user = response.body;

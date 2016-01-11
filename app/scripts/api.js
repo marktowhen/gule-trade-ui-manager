@@ -84,9 +84,9 @@ shopbackApp.service('ApiService', function () {
         },
         'goodsOperation':{//商品操作
             'merchantlist':'http://localhost:8080/api/goodsOperation/merchant/list',
-            'brandlist':'http://localhost:8080/api/goodsOperation/brands/',
+            'brandlist':'http://localhost:8080/api/goodsOperation/brand/:mid/list',
             'typelist':'http://localhost:8080/api/goods/type/list',
-            'show':'http://localhost:8080/api/goodsOperation/updateveiw/',
+            'show':'http://localhost:8080/api/goodsOperation/updateview/',
             'save':'http://localhost:8080/api/goodsOperation/save',
             'update':'http://localhost:8080/api/goodsOperation/update/',
             'updatecount':'http://localhost:8080/api/goodsOperation/modfiycount/:gid/:count',
@@ -140,11 +140,13 @@ shopbackApp.service('ApiService', function () {
             'admodulelist':'http://localhost:8080/api/track/admodule/list'
         },
         'brand':{
-            'brandlist':'http://localhost:8080//api/brand/brands/',
+            'brandbymid':'http://localhost:8080//api/brand/:mid/list',
             'save':'http://localhost:8080/api/brand/save',
-            'getbyid':'http://localhost:8080/api/brand/updateveiw/',
+            'getbyid':'http://localhost:8080/api/brand/updateview/',
             'update':'http://localhost:8080/api/brand//update/',
-             'del':'http://localhost:8080/api/brand/'
+             'del':'http://localhost:8080/api/brand/',
+              'alllist':'http://localhost:8080/api/brand/all/list'
+            
 
 
         },

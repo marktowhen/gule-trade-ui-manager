@@ -14,6 +14,8 @@ shopbackApp.controller('HeaderTopController', function ($scope,$cookies,$state,U
 		SellerService.current().success(function(data){
 			if(data.code==200){
 				$scope.topUsername = data.body.sname;
+			}else{
+				$state.go("login");
 			}
 			
 		})
@@ -23,6 +25,8 @@ shopbackApp.controller('HeaderTopController', function ($scope,$cookies,$state,U
     	ManagerService.current().success(function(data){
 			if(data.code==200){
 				$scope.topUsername = data.body.mname;
+			}else{
+				$state.go("login");
 			}
 			
 		})

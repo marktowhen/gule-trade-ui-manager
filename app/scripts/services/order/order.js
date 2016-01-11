@@ -8,18 +8,18 @@
  * Controller of the jingyunshopApp
  */
 shopbackApp.service('OrderService', function ($http, $location, ApiService) {
-   this.listWithCondition  = function (from, size, status, orderno, gname, uname, mname, fromdate, enddate){
+   this.listWithCondition  = function (mid, from, size, status, orderno, gname, uname, mname, fromdate, enddate){
         return  $http.get(ApiService.api.order.listWithCondition,
-                    {'params': {'status':status, 'orderno':orderno, 
+                    {'params': {'mid':mid, 'status':status, 'orderno':orderno, 
                             'gname':gname, 'uname':uname, 'mname': mname, 
                             'fromdate':fromdate, 'enddate':enddate,
                             'from':from, 'size':size}});
     };
 
-    this.count = function(status, orderno, gname, uname, mname, fromdate, enddate){
+    this.count = function(mid, status, orderno, gname, uname, mname, fromdate, enddate){
         return $http.get(
             ApiService.api.order.count,
-            {params:{'status':status, 'orderno':orderno, 'gname':gname, 'uname':uname, 'mname': mname, 'fromdate':fromdate, 'enddate':enddate}});
+            {params:{'mid':mid, 'status':status, 'orderno':orderno, 'gname':gname, 'uname':uname, 'mname': mname, 'fromdate':fromdate, 'enddate':enddate}});
     }
 
     this.accept = function(order){

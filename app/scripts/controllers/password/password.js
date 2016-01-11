@@ -9,8 +9,7 @@
  */
 shopbackApp.controller('PasswordController', function ($scope,$cookies, ConstantService,PasswordService) {
 
-	//身份
-	var loginForSeller =  ($cookies.get('LOGIN_FOR_SELLER')=='true');
+	
 
 	var getSubmitInfo = function(oldPwd, newPwd){
 		return {

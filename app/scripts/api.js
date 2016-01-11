@@ -11,7 +11,7 @@ shopbackApp.service('ApiService', function () {
     this.api = {
         
         'order':{
-            'listWithCondition': 'http://localhost:8080/api/orders/seller/:from/:size',
+            'listWithCondition': 'http://localhost:8080/api/orders/manager/list',
             'accept':'http://localhost:8080/api/orders/acception',
             'delivered':'http://localhost:8080/api/orders/logistic',
             'singleByOID':'http://localhost:8080/api/orders/:oid',
@@ -19,10 +19,10 @@ shopbackApp.service('ApiService', function () {
             'logistic':'http://localhost:8080/api/orders/:oid/logistic',
             'listOrderStatus':'http://localhost:8080/api/order/status/visible',
             'cancel':'http://localhost:8080/api/orders/cancellation',
-            'count':'http://localhost:8080/api/orders/seller/count'
+            'count':'http://localhost:8080/api/orders/manager/count'
         },
         'refund':{
-            'listWithCondition': 'http://localhost:8080/api/refund/seller/:from/:size',
+            'listWithCondition': 'http://localhost:8080/api/refund/manager/list',
             'accept':'http://localhost:8080/api/refund/acception',
             'deny':'http://localhost:8080/api/refund/denial',
             'done':'http://localhost:8080/api/refund/completion'

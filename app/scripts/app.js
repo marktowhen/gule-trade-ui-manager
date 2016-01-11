@@ -89,10 +89,10 @@ var shopbackApp= angular
         templateUrl: '/views/trading-center/transaction-management/delivered.html',
         url:"/order/delivered"
       })
-      /*.state('trading-center.update-pwd', {
+      .state('trading-center.update-pwd', {
         templateUrl: '/views/trading-center/password/update.html',
         url:"/password/update"
-      })*/
+      })
       .state('station-goods',{
         url:"/station-goods",
         views: { 

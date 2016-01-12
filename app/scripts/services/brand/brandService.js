@@ -10,11 +10,11 @@
 shopbackApp.service('BrandService', function($http,$location,$state,$resource,ApiService){
 	
 	 this.brandByMidlist  = function (mid){
-            return  $http.get(ApiService.api.brand.brandlist+mid,
+            return  $http.get(ApiService.api.brand.brandbymid.replace(":mid",mid),
                         {'Content-Type': 'application/json;charset=UTF-8'}); 
          };
     this.listAllBrands = function(){
-       return  $http.get("http://localhost:8080/api/brand/brands",
+       return  $http.get(ApiService.api.brand.alllist,
                         {'Content-Type': 'application/json;charset=UTF-8'}); 
     };
       this.saveBrand  = function (brand){
@@ -28,7 +28,7 @@ shopbackApp.service('BrandService', function($http,$location,$state,$resource,Ap
 	         					alert("添加品牌异常....."+response.message);
 	         				}
 	         			}).error(function(response){
-							alert("添加品牌失败:"+response);
+							alert("网络异常,稍后重试.");
 						});
         };
 
@@ -45,7 +45,7 @@ shopbackApp.service('BrandService', function($http,$location,$state,$resource,Ap
 	         					alert("修改品牌异常....."+response.message);
 	         				}
 	         			}).error(function(response){
-							alert("修改品牌失败:"+response);
+							alert("网络异常,稍后重试.");
 						});
         };
 
@@ -61,7 +61,7 @@ shopbackApp.service('BrandService', function($http,$location,$state,$resource,Ap
                     alert("删除品牌异常....."+response.message);
                   }
                 }).error(function(response){
-              alert("删除品牌失败:"+response);
+              alert("网络异常,稍后重试.");
             });
         };
 

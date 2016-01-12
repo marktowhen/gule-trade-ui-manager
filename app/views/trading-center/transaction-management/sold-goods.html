@@ -1,10 +1,15 @@
 <div class="sold-goods" ng-controller="OrderListController">
 	<div class="sg-top-title">交易管理&gt已卖出的宝贝</div>
 	<div class="sg-mid-detail">
+		<div class="sg-detail">
+			<span>商家名称：</span>
+			<select  ng-model="mid" ng-options="m.mid as m.merchantName for m in merchantlist"></select>
+		</div>
 		<ul class="sg">
 			<li class="sg-detail">
 				<p>宝贝名称：</p>
-				<input type="text" class="sg-t" ng-model="gname"></li>
+				<input type="text" class="sg-t" ng-model="gname">
+			</li>
 			<li class="sg-detail">
 				<p>成交时间：从&nbsp</p>
 				<input  id="fromtime" class="release-commodity-shelf-start-day" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" ng-model="fromdate">
@@ -100,7 +105,7 @@
 								<span class="sgb-no-info">{{order.orderno}}</span>
 							</td>
 							<td class="sgb-date">
-								<span>下单时间：{{order.addtime | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+								<span>下单时间：{{order.addtime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
 							</td>
 						</tr>
 					</tbody>

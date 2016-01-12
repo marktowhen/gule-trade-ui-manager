@@ -12,7 +12,6 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
     //cookie信息
     var LOGIN_KEY = "LOGIN_KEY_BACK"; //手机/邮箱/用户名的key
     var LOGIN_REMEMBER = "LOGIN_REMEMBER_BACK"; //登录是否记住我
-    var LOGIN_FOR_SELLER = "LOGIN_FOR_SELLER";
 
     //从cookie中获取登录信息
      $scope.$watch('$viewContentLoaded', function() {  
@@ -21,35 +20,25 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
                 $scope.user = {
                                 'key':$cookies.get(LOGIN_KEY)
                             };
-                if($cookies.get(LOGIN_FOR_SELLER)=='false'){
-                    $scope.loginForSeller = false;
-                }
+                
            }else{
                 $scope.user = {};
            }
         });  
 
-    //默认卖家登录
-    $scope.loginForSeller = true;
-    $scope.changeLoginType = function(){
-        $scope.loginForSeller = !$scope.loginForSeller;
-    }
+    
+    
 
 	$scope.login = function(user, byDialog){
-		//$scope.loginForSeller = true;
-        var loginUrl = ApiService.api.login.seller;
-        if(!$scope.loginForSeller){
-            loginUrl = ApiService.api.login.manager;
-        }
+		
          
-    	$http.post(loginUrl , getSubmitUser(user), {'Content-Type': 'application/json;charset=UTF-8'}).success(function(response){
+    	$http.post(ApiService.api.login.manager , getSubmitUser(user), {'Content-Type': 'application/json;charset=UTF-8'}).success(function(response){
     		if(response.code == 200){
                 //如果用户点选记住我 将用户名密码放入cookie
                 //失效时间
                 var expireDate = new Date();
                 //30天
                 expireDate.setDate(expireDate.getDate() + 30);
-                $cookies.put(LOGIN_FOR_SELLER, $scope.loginForSeller, {'expires': expireDate});
                 if($("input[name='remember']:checked").length>0){
                     
                     $cookies.put(LOGIN_KEY , user.key,{'expires': expireDate});
@@ -57,7 +46,7 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
                     
                 }else{
                     $cookies.remove(LOGIN_KEY );
-                    $cookies.put(LOGIN_REMEMBER, 0);
+                    $cookies.put(LOGIN_REMEMBER, 0);                                                                                                                                                                      
                 }
 
                 $rootScope.user = response.body;
@@ -84,7 +73,7 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
                 alert( response.message);
     		}
     	}).error(function(response){
-            alert( "登录失败 请稍后再试");
+            alert( "网络异常,请稍后重试");
     	});
 	};
 

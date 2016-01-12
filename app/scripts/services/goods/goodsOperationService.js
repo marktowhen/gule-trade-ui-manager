@@ -19,7 +19,7 @@ shopbackApp.service('GoodsOperationService', function ($http, $state,$location,A
                         {'Content-Type': 'application/json;charset=UTF-8'}); 
             };
     	 this.brandlist  = function (mid){
-    	  	return  $http.get(ApiService.api.goodsOperation.brandlist+mid,
+    	  	return  $http.get(ApiService.api.goodsOperation.brandlist.replace(":mid",mid),
                         {'Content-Type': 'application/json;charset=UTF-8'}); 
     	  	};
     	  	//获取类别
@@ -70,7 +70,7 @@ shopbackApp.service('GoodsOperationService', function ($http, $state,$location,A
 	         					alert("添加商品异常....."+response.message);
 	         				}
 	         			}).error(function(response){
-							alert("添加商品失败:"+response);
+							alert("网络异常,稍后重试.");
 						});
         };
 
@@ -86,7 +86,7 @@ shopbackApp.service('GoodsOperationService', function ($http, $state,$location,A
                                 alert("修改商品异常....."+response.message);
                             }
                         }).error(function(response){
-                            alert("修改商品失败:"+response);
+                           alert("网络异常,稍后重试.");
                         });
         };
 });

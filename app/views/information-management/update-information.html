@@ -27,7 +27,8 @@
 		<form id='fileinfo'>
 			<input style='display:none' type='file' value='头像上传' id='file' name='file' ng-model='uploadBtn' onChange="$('#submitFile').trigger('click');" />
 
-			<input id='submitFile' type='hidden' ng-click='uploadFile()'></form>
+			<input id='submitFile' type='hidden' ng-click='uploadFile()'>
+		</form>
 			<input type='hidden' ng-model='infoschool.picture'/>
 			<div class="frames">
 				<img  ng-src='{{infoschool.picture}}' ng-if="infoschool.picture" />

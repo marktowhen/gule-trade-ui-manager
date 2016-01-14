@@ -142,7 +142,7 @@ var shopbackApp= angular
       })
       ;
   })
-.run(function($rootScope, $state,$cookieStore,$cookies) {
+.run(function($rootScope, $state,$cookieStore,$cookies,LOGIN_ID_COOKIE_KEY) {
   //state 跳转前监听
   $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
 
@@ -152,7 +152,7 @@ var shopbackApp= angular
     if(toState.name=='login'){
       return ;
     }
-    var uid = $cookies.get("LOGIN_USER_ID");
+    var uid = $cookies.get(LOGIN_ID_COOKIE_KEY);
     if(!uid){
         event.preventDefault();// 取消默认跳转行为
 
@@ -167,7 +167,7 @@ var shopbackApp= angular
         //刷新cookie 失效时间
         var expireDate = new Date();
         expireDate.setMinutes(expireDate.getMinutes()+10);
-        $cookies.put('LOGIN_USER_ID' , uid,{'expires': expireDate});
+        $cookies.put(LOGIN_ID_COOKIE_KEY , uid,{'expires': expireDate});
     }
     //--------身份验证   end
   });
@@ -182,21 +182,22 @@ var shopbackApp= angular
 
   });
 })
-
+//登录用户id在cookie中的key
+.constant('LOGIN_ID_COOKIE_KEY', 'LOGIN_USER_ID');
 //请求拦截器 每当有请求发生，更新cookies失效时间
-shopbackApp.factory('cookiesRefreshInterceptor', ['$q', '$cookies', '$rootScope',function($q, $cookies,$rootScope) {
+shopbackApp.factory('cookiesRefreshInterceptor', ['$q', '$cookies', '$rootScope','LOGIN_ID_COOKIE_KEY',function($q, $cookies,$rootScope,LOGIN_ID_COOKIE_KEY) {
     var cookiesRefreshInterceptor = {
         request: function(config) {
             if (config.url.indexOf('login')>-1 || config.url.indexOf('.html')>-1) {
               return config;
             };
             //用户身份标识
-            var uid = $cookies.get("LOGIN_USER_ID");
+            var uid = $cookies.get(LOGIN_ID_COOKIE_KEY);
             if(uid){
                   //刷新cookie 失效时间
                   var expireDate = new Date();
                   expireDate.setMinutes(expireDate.getMinutes()+10);
-                  $cookies.put('LOGIN_USER_ID' , uid,{'expires': expireDate});
+                  $cookies.put(LOGIN_ID_COOKIE_KEY , uid,{'expires': expireDate});
                   return config;
             }else{
               //弹出登录弹出框

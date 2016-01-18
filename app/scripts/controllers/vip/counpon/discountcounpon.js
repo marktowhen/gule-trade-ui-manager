@@ -62,19 +62,24 @@ shopbackApp.controller('DiscountcounponController', function ($scope,$cookies, C
 	 	});
 	 }
 
-
+	 //选中的券
+	 var selectedIDS = [];
 	 //全选/反选
 
  	$scope.chkall = false;
  	$scope.chkAll = function(checked){
 
  		var list = $scope.counpons;
+ 		selectedIDS = [];
 		 	for(var j = 0; j < list.length; j++){
                 list[j].selected = checked;
+                if(checked){
+                	selectedIDS.push(list[j].id);
+                }
             }
  	};
 
- 	var selectedIDS = [];
+ 	
 
  	$scope.selectItem = function(cash){
  		if(cash.selected){

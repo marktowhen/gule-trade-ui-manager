@@ -8,7 +8,7 @@
  * Controller of the jingyunshopApp
  */
 shopbackApp.controller('DiscountcounponController', function ($scope,$cookies, ConstantService, DiscountcounponService) {
-
+	$scope.sizeList= [10,50,100,500];
 	 //每页数量
  	$scope.size = 10;
  	//是否显示'展示更多'

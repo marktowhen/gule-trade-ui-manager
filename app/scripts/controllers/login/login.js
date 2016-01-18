@@ -52,7 +52,9 @@ shopbackApp.controller('LoginController', function ($scope, $http, $location, $c
                 $rootScope.user = response.body;
 
                 if(byDialog){
+                    user = {};
                     $("#login-dialog").modal("hide");
+                    
                     return;
                 }
                 //被拒绝跳转的页面

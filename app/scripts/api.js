@@ -68,13 +68,13 @@ shopbackApp.service('ApiService', function () {
                 'list' : 'http://localhost:8080/api/vip/coupon/cashcoupon/list/:from/:size',
                 'count' : 'http://localhost:8080/api/vip/coupon/cashcoupon/amount',
                 'save' : 'http://localhost:8080/api/vip/coupon/cashcoupon/:amount',
-                'unlock' : 'http://localhost:8080/api/vip/coupon/cashcoupon/unlock/:ids'
+                'unlock' : 'http://localhost:8080/api/vip/coupon/cashcoupon/unlock'
             },
             'discountcounpon' : {
                 'list' : 'http://localhost:8080/api/vip/coupon/discountcoupon/list/:from/:size',
                 'count' : 'http://localhost:8080/api/vip/coupon/discountcoupon/amount',
                 'save' : 'http://localhost:8080/api/vip/coupon/discountcoupon/:amount',
-                'unlock' : 'http://localhost:8080/api/vip/coupon/discountcoupon/unlock/:ids'
+                'unlock' : 'http://localhost:8080/api/vip/coupon/discountcoupon/unlock'
             }
         },
         'goods':{//根据条件查询商品

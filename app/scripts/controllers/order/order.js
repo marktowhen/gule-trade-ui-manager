@@ -13,6 +13,12 @@ shopbackApp.controller('OrderController', function ($scope, ConstantService, Ord
         $scope.merchantlist =data.body;
     });
 
+    OrderService.logisticlist().success(function(data){
+    	$scope.logisticlist = data.body;
+    	//console.log($scope.logisticlist);
+    });
+
+
 	$scope.condition = {};
 	
 	$scope.search2Accept = function(){
@@ -48,8 +54,19 @@ shopbackApp.controller('OrderController', function ($scope, ConstantService, Ord
 		});
 	};
 
+	$scope.getexpressName = function(code){
+		for (var i = 0; i<$scope.logisticlist.length;i++) {
+			if (code == $scope.logisticlist[i].code){
+				$scope.expressName = $scope.logisticlist[i].name;
+			}
+		}
+	};
+
 	$scope.delivered = function(order){
-		if(!order.logistic || !order.logistic.expressno || !order.logistic.expressName){
+
+		order.logistic.expressName =  $scope.expressName;  
+
+		if(!order.logistic || !order.logistic.expressno || !order.logistic.expressName  || !order.logistic.expressCode){
 			alert("请完善物流信息！");
 			return;
 		}

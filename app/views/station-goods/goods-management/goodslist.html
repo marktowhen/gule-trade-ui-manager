@@ -38,51 +38,7 @@
 	
 	</div>
 	<div class="gl-content" >
-<!-- 	<div class="gl-hd">
-	<div class="glh-mid">
-		<ul class="glhm">
-			<li class="glh-m">商品名称</li>
-			<li class="glh-m glh-m2">商家</li>
-			<li class="glh-m">品牌</li>
-			<li class="glh-m">商品编码</li>
-			<li class="glh-m">库存</li>
-			<li class="glh-m">原价（元）</li>
-			<li class="glh-m">促销价</li>
 
-			<li class="glh-m">操作</li>
-		</ul>
-	</div>
-</div> -->
-	
-<!-- <div class="gl-bd">
-<div class="glb-mid">
-	<div ng-repeat="goods in goodslist" class = "glb-line">
-		<ul class="glbm">
-			<li class="glb-m along">
-			<a ui-sref="station-goods.update-goods({gid:'{{goods.gid}}'})">
-			{{goods.goodsName}}
-			</a>
-			</li>
-			<li class="glb-m along">{{goods.merchantName}}</li> 
-			<li class="glb-m along">{{goods.brandName}}</li>
-			<li class="glb-m along">{{goods.goodsCode}}</li>
-			<li class="glb-m " id="{{goods.gid}}" >{{goods.count}}</li>
-			<li class="glb-m ">{{goods.price}}</li>
-			<li class="glb-m ">{{goods.promotionPrice}}</li>
-			<li class="glb-m ">
-				<a href="#" class="aa" ui-sref="station-goods.update-goods({gid:'{{goods.gid}}'})">编辑</a>
-
-				<a href="#" class="aa" ng-click="up('{{goods.gid}}')" ng-show="{{goods.state == 0}}">上架</a>
-				<a href="#" class="aa" ng-click="down('{{goods.gid}}')" ng-show="{{goods.state == 1}}">下架</a>
-
-				<a  class="aa" ng-click="changeCount('{{goods.gid}}',{{goods.count}})" id="_{{goods.gid}}">改库存</a>
-			</li>
-		</ul>
-		<div class="clear"></div>
-
-	</div>
-</div>
-</div>  -->
 总数量 : {{total}}
 <table border="1" width="100%" class="table1" >
 	<tr style="height: 40px; ">
@@ -112,7 +68,7 @@
 			<th class="width2 cleanTH">{{goods.goodsCode}}</th>
 			<th class="width3 cleanTH" id="{{goods.gid}}">{{goods.count}}</th>
 			<th class="width3 cleanTH">{{goods.price}}</th>
-			<th class="width3 cleanTH">{{goods.promotionPrice}}</th>
+			<th class="width3 cleanTH">{{goods.onSale==1?goods.promotionPrice:''}}</th>
 			<th class="width3 cleanTH">{{goods.onSale==1?'是':'否'}}</th>
 			<th class="width1 cleanTH">
 				<a href="#" class="aa" ui-sref="station-goods.update-goods({gid:'{{goods.gid}}'})">编辑</a>

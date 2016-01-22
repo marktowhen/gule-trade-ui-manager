@@ -156,6 +156,11 @@ shopbackApp.service('ApiService', function () {
             'getbyid':'http://localhost:8080/api/goodstype/single/',
             'update':'http://localhost:8080/api/goodstype/update/',
             'del':'http://localhost:8080/api/goodstype/del/'
+        },
+        'logistic':{
+            'logisticlist':'http://localhost:8080/api/express/list',
+            'expressinfo':'http://localhost:8080/api/express/info/:oid/:code/:codeid'
         }
+
     }
 });

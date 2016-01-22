@@ -42,11 +42,8 @@ shopbackApp.controller('OrderDetailController', function ($scope, $stateParams, 
                     //$scope.logistic.expressno     运单号
                     OrderService.logisticinfo(oid,$scope.logistic.expressCode,$scope.logistic.expressno)
                     .success(function(data){
-                        if(data.body.success){
-                             if(data.body.logisticcode==$scope.logistic.expressno){
-                                $scope.express = data.body;
-                             }
-                        }
+                                $scope.expressinfo = data.body;
+
                     });
 
                 }

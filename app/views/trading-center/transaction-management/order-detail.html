@@ -30,10 +30,10 @@
 								<th class="order-detail-li-trade-info-h">处理信息</th>
 								<th class="order-detail-li-trade-person-h">备注</th>
 							</tr>
-							<tr  ng-repeat="tr in express.traces">
-								<td class="order-detail-li-trade-date">{{tr.accepttime}}</td>
-								<td class="order-detail-li-trade-info">{{tr.acceptstation}}</td>
-								<td class="order-detail-li-trade-person">{{tr.remark}}</td>
+							<tr  ng-repeat="ex in expressinfo">
+								<td class="order-detail-li-trade-date">{{ex.time}}</td>
+								<td class="order-detail-li-trade-info">{{ex.content}}</td>
+								<td class="order-detail-li-trade-person">{{ex.remark}}</td>
 							</tr>
 							
 						</table>

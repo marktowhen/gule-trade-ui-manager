@@ -158,8 +158,8 @@ shopbackApp.service('ApiService', function () {
             'del':'http://localhost:8080/api/goodstype/del/'
         },
         'logistic':{
-            'logisticlist':'http://localhost:8080/api/express/list',
-            'expressinfo':'http://localhost:8080/api/express/info/:oid/:code/:codeid'
+            'logisticlist':'http://localhost:8080/api/logistic/express/list',
+            'expressinfo':'http://localhost:8080/api/logistic/express/info/:oid/:code/:codeid'
         }
 
     }

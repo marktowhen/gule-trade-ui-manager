@@ -1,0 +1,159 @@
+
+<div ng-controller="BannerController">
+<div class="merchant-list"  style="width: 1200px;">
+	<div class="ml-top-title">banner管理</div>
+	<div class="ml-mid-detail">
+		<ul class="ml">
+			
+			
+			类型:<select ng-model="type" ng-options="item.key as item.value  for item in types"></select>
+					  
+			
+		</ul>
+		
+		<div class="clear h10"></div>
+	
+		<div class="ml-ser" style='float: left;'ng-click="reSearch()">查询</div>
+		<div class="clear"></div>
+	</div>
+	<div class="ml-content" style="width: 1200px;">
+		<div class="ml-hd">
+			<div class="mlh-mid">
+				<ul class="mlhm">
+					
+					
+					<li class="mlh-m ">类型</li>
+					<li class="mlh-m ">排序</li>
+					<li class="mlh-m ">PC图片</li>
+					<li class="mlh-m" >PC跳转地址</li>
+					<!-- <li class="mlh-m">微站点图片</li>
+					<li class="mlh-m">微站点跳转地址</li> -->
+					<li class="mlh-m">alt</li>
+					<li class="mlh-m">备注</li>
+					<li class="mlh-m">操作</li>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="ml-bd" style="    height: inherit;">
+			<div class="mlb-mid">
+				<div  ng-repeat="banner in banners" class = "mlb-line">
+					<ul class="mlbm" style="text-align: center;">
+						
+						<li class="mlb-m ">{{banner.type}}</li>
+						<li class="mlb-m ">{{banner.order}}</li>
+						<li class="mlb-m"><a href="{{banner.image}}" target="_blank"><img src='{{banner.image}}@40h_40w.jpg' /></a></li>
+						<li class="mlb-m " ><a href="{{banner.targetUrl}}" target="_blank">点击查看</a></li>
+						<!-- <li class="mlb-m "><a href="{{banner.wechatImage}}" target="_blank"><img src='{{banner.wechatImage}}@136h_136w.jpg' /></a></li>
+						<li class="mlb-m " ><a href="{{banner.wechatTargetUrl}}" target="_blank">点击查看</a></li> -->
+						<li class="mlb-m">{{banner.alt }}</li>
+						<li class="mlb-m">{{banner.remark}}</li>
+						<li class="mlb-m"><a href ng-click="single('{{banner.id}}')">编辑</a>&nbsp;&nbsp;<a href ng-click="remove('{{banner.id}}')">删除</a></li>
+						
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="">当前数量{{banners.length}}/总计{{amount}} 
+			每次加载<select ng-model='size' ng-options="item as item  for item in sizeList"  ng-change='reSearch()'></select>
+		 	<span style="margin-left: 20px;" ng-click="list()" ng-if="more">展示更多&gt;&gt;</span> 
+		</div>
+	</div>
+</div>
+
+<div class="center-view" >
+<ng-form  name='saveForm'>
+
+	<div class="commodity-main">
+		<div class="commodity-main-hd">
+			<a href ng-click='clearBanner();'>点击新增</a>/修改
+		</div>
+		<div class="commodity-base-info">
+			<div class="release-commodity-hd">
+				基本信息
+			</div>
+			<div class="release-commodity-info">
+				<ul class="release-commodity-info-list">
+					<li>
+						<div class="release-commodity-info-label fl">类型：</div>
+						<div class="release-commodity-info-txt fl" >
+							<select class="release-commodity-select-length" name="type"  ng-model="banner.type" ng-options="item.key as item.value  for item in types" required>
+								
+							</select>
+						</div>
+						<p ng-show="saveForm.value.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+					</li>
+					
+					<div class="clear"></div>
+					
+					<li>
+						<div class="release-commodity-info-label fl">pc端图片：应该隐藏</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-upload-img" type="file" id="file" name="file" ng-model='file' onchange="angular.element(this).scope().upload('file',this)" />
+							<a ng-if="banner.image" href="banner.image" target="_blank"><img src="{{banner.image}}@40h_40w.jpg" /></a>
+							<input  ng-model="banner.image" name='image' required  >
+						</div>
+						
+						<p ng-show="saveForm.image.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+							
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">pc端跳转地址：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-upload-img" type="input"  name="targetUrl" ng-model="banner.targetUrl" />
+						</div>
+						
+						<p ng-show="saveForm.targetUrl.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+							
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">排序：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-input-length release-commodity-postage fl"   ng-model="banner.order" pattern="^\d+$" name="order" required>
+						</div>
+						<p ng-show="saveForm.order.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填 序号越大越靠前</p>
+						<p ng-show="saveForm.order.$dirty && saveForm.order.$error.pattern" style="color: red" >&nbsp;排序只能输入正整数</p>
+							
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">alt：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-upload-img" type="input"  name="alt" ng-model="banner.alt" />
+						</div>
+						
+							
+					</li>
+
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">备注：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-upload-img" type="input"  name="remark" ng-model="banner.remark" />
+						</div>
+						
+							
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="release-commodity-footer" >
+		<!--  -->
+			<button class="release-commodity-btn"  ng-click="submit(banner)"
+			ng-disabled="saveForm.$invalid || submiting"
+			>
+				发布
+			</button>
+		</div>
+	</div>
+
+</ng-form>
+</div>
+
+</div>

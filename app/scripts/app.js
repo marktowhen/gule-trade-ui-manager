@@ -140,6 +140,10 @@ var shopbackApp= angular
         templateUrl: '/views/station-goods/goods-management/goodslist.html',
         url:"/goods/list"
       })
+      .state('station-info.banner',{
+        templateUrl:'/views/banner/banner.html',
+        url:"/banner"
+      })
       ;
   })
 .run(function($rootScope, $state,$cookieStore,$cookies,LOGIN_ID_COOKIE_KEY) {

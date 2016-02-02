@@ -45,7 +45,15 @@ shopbackApp.service('ApiService', function () {
         'manager':{
             'current' :'http://localhost:8080/api/manager/current'
         },
+        'banner':{
+            'save' :'http://localhost:8080/api/banner/',
+            'refresh' :'http://localhost:8080/api/banner/:ID',
+            'remove' :'http://localhost:8080/api/banner/:ID',
+            'list' :'http://localhost:8080/api/banner/list/:from/:size',
+            'count' :'http://localhost:8080/api/banner/count',
+            'single' :'http://localhost:8080/api/banner/:ID',
 
+        },
         'helpCenter':{
             'category' : {
             	'list' : 'http://localhost:8080/api/information/help/center/category/list',
@@ -124,6 +132,7 @@ shopbackApp.service('ApiService', function () {
         },
         'resource':{
             'ueditor':'http://localhost:8080/api/resource/ueditor/upload',
+            'multiple':'http://localhost:8070/api/resource/upload/multiple',
             'single':'http://localhost:8080/api/resource/upload/single'
         },
         'track':{//推广系统模块

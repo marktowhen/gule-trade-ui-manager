@@ -18,3 +18,14 @@ shopbackApp.filter('booleanFilter', function (){
 	
 });
 
+shopbackApp.filter('bannerTypeFilter', function (){
+	return function(attr){
+		if(attr == 'index'){
+			return '首页';
+		}else{
+			return '其他';
+		}
+		
+	};
+	
+});

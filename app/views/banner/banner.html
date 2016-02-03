@@ -28,7 +28,7 @@
 					<li class="mlh-m" >PC跳转地址</li>
 					<!-- <li class="mlh-m">微站点图片</li>
 					<li class="mlh-m">微站点跳转地址</li> -->
-					<li class="mlh-m">alt</li>
+					<!-- <li class="mlh-m">alt</li> -->
 					<li class="mlh-m">备注</li>
 					<li class="mlh-m">操作</li>
 					
@@ -40,13 +40,13 @@
 				<div  ng-repeat="banner in banners" class = "mlb-line">
 					<ul class="mlbm" style="text-align: center;">
 						
-						<li class="mlb-m ">{{banner.type}}</li>
+						<li class="mlb-m ">{{banner.type | bannerTypeFilter}}</li>
 						<li class="mlb-m ">{{banner.order}}</li>
 						<li class="mlb-m"><a href="{{banner.image}}" target="_blank"><img src='{{banner.image}}@40h_40w.jpg' /></a></li>
 						<li class="mlb-m " ><a href="{{banner.targetUrl}}" target="_blank">点击查看</a></li>
-						<!-- <li class="mlb-m "><a href="{{banner.wechatImage}}" target="_blank"><img src='{{banner.wechatImage}}@136h_136w.jpg' /></a></li>
+						<!-- <li class="mlb-m "><a href="{{banner.wechatImage}}" target="_blank"><img src='{{banner.wechatImage}}@40h_40w.jpg' /></a></li>
 						<li class="mlb-m " ><a href="{{banner.wechatTargetUrl}}" target="_blank">点击查看</a></li> -->
-						<li class="mlb-m">{{banner.alt }}</li>
+						<!-- <li class="mlb-m">{{banner.alt }}</li> -->
 						<li class="mlb-m">{{banner.remark}}</li>
 						<li class="mlb-m"><a href ng-click="single('{{banner.id}}')">编辑</a>&nbsp;&nbsp;<a href ng-click="remove('{{banner.id}}')">删除</a></li>
 						
@@ -82,17 +82,17 @@
 								
 							</select>
 						</div>
-						<p ng-show="saveForm.value.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+						<p ng-show="saveForm.type.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
 					</li>
 					
 					<div class="clear"></div>
 					
 					<li>
-						<div class="release-commodity-info-label fl">pc端图片：应该隐藏</div>
+						<div class="release-commodity-info-label fl">pc端图片：</div>
 						<div class="release-commodity-info-txt fl">
-							<input class="release-commodity-upload-img" type="file" id="file" name="file" ng-model='file' onchange="angular.element(this).scope().upload('file',this)" />
-							<a ng-if="banner.image" href="banner.image" target="_blank"><img src="{{banner.image}}@40h_40w.jpg" /></a>
-							<input  ng-model="banner.image" name='image' required  >
+							<input class="release-commodity-upload-img" style="width: 182px;" type="file" id="file" name="file" ng-model='file' onchange="angular.element(this).scope().upload('file',this)" />
+							<a ng-if="banner.image" href="banner.image" target="_blank"><img src="{{banner.image}}@100h_100w.jpg" /></a>
+							<input type='hidden' ng-model="banner.image" name='image' required  >
 						</div>
 						
 						<p ng-show="saveForm.image.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
@@ -102,23 +102,26 @@
 					<li>
 						<div class="release-commodity-info-label fl">pc端跳转地址：</div>
 						<div class="release-commodity-info-txt fl">
-							<input class="release-commodity-upload-img" type="input"  name="targetUrl" ng-model="banner.targetUrl" />
+							<input class="release-commodity-upload-img" type="input"  name="targetUrl" ng-model="banner.targetUrl" required/>
 						</div>
 						
 						<p ng-show="saveForm.targetUrl.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
 							
 					</li>
+					
+					
+					
 					<div class="clear"></div>
 					<li>
 						<div class="release-commodity-info-label fl">排序：</div>
 						<div class="release-commodity-info-txt fl">
-							<input class="release-commodity-input-length release-commodity-postage fl"   ng-model="banner.order" pattern="^\d+$" name="order" required>
+							<input class=" release-commodity-postage fl"   ng-model="banner.order" pattern="^\d+$" name="order" required>
 						</div>
-						<p ng-show="saveForm.order.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填 序号越大越靠前</p>
+						<p ng-show="saveForm.order.$error.required" style="color: red" >&nbsp;*必填 序号越大越靠前</p>
 						<p ng-show="saveForm.order.$dirty && saveForm.order.$error.pattern" style="color: red" >&nbsp;排序只能输入正整数</p>
 							
 					</li>
-					<div class="clear"></div>
+					<!-- <div class="clear"></div>
 					<li>
 						<div class="release-commodity-info-label fl">alt：</div>
 						<div class="release-commodity-info-txt fl">
@@ -126,7 +129,7 @@
 						</div>
 						
 							
-					</li>
+					</li> -->
 
 					<div class="clear"></div>
 					<li>

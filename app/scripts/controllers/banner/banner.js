@@ -84,6 +84,9 @@ shopbackApp.controller('BannerController', function ($scope,$cookies, ConstantSe
 			 UploadService.single(fileInput)
 	            .success(function(data){
 	            	if(data.ok){
+	            		if(!$scope.banner){
+	            			$scope.banner = {};
+	            		}
 	            		$scope.banner.image = data.body;
 	            	}else{
 	            		 alert($scope, data.message);

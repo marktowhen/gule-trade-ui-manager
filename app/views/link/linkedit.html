@@ -1,0 +1,61 @@
+<div class="center-view" ng-controller="LinkController as linkCtl">
+<ng-form  name='saveForm'>
+
+	<div class="commodity-main">
+		<div class="commodity-main-hd">
+			站内信息&gt;友情链接
+		</div>
+		<div class="commodity-base-info">
+			<div class="release-commodity-hd">
+				友情链接
+			</div>
+			<div class="release-commodity-info">
+				<ul class="release-commodity-info-list">
+					<li>
+						<div class="release-commodity-info-label fl">链接名称：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-code"  type="text" ng-model="link.name" name="name" required>
+						</div>
+						<p ng-show="saveForm.name.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">链接路径：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-code"  type="text" ng-model="link.url" name="url" required>
+						</div>
+						
+						<p ng-show="saveForm.url.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填</p>
+					
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">链接排序：</div>
+						<div class="release-commodity-info-txt fl">
+							<input class="release-commodity-code"  type="text" ng-model="link.order" name="order" required  pattern="^[+-]?\d+(\.\d+)?$">
+						</div>
+						 <p ng-show="saveForm.order.$error.required" style="color: red" >&nbsp;&nbsp;&nbsp;*必填
+						 </p> 
+						 		<p ng-show="saveForm.order.$dirty && saveForm.order.$error.pattern" style="color: red" >&nbsp;排序只能输入数字</p>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<div class="release-commodity-info-label fl">链接图片：</div>
+						<form  id="fileinfo">
+							<input type="file" id="file" name="file" onchange="$('#sub').trigger('click')" />
+							<input id="sub" type="hidden" ng-click="doUpload()"/>
+						</form>
+						{{img_success}}
+					</li>
+					
+		<div class="release-commodity-footer" >
+			<button class="release-commodity-btn" ng-click="update(link)"
+			ng-disabled="saveForm.$invalid"
+			> 修改
+			</button>
+		</div>
+	</div>
+
+</ng-form>
+</div>
+

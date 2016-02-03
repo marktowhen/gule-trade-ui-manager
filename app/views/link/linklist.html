@@ -1,0 +1,38 @@
+<div class="merchant-list" ng-controller="LinkController as linkCtl">
+	<div class="ml-top-title">站内信息&gt友情链接</div>
+	<div class="ml-mid-detail">
+		<div class="ml-ser" ng-click="query()">查询</div>
+	</div>
+	<div class="ml-content">
+		<div class="ml-hd">
+			<div class="mlh-mid">
+				<ul class="mlhm">
+					<li class="mlh-m mlh-m2">名称</li>
+					<li class="mlh-m mlh-m2" style="width:300px;">url路径</li>
+					<li class="mlh-m mlh-m2">图片</li>
+					<li class="mlh-m">排序</li>
+					<li class="mlh-m">操作</li>
+				</ul>
+			</div>
+		</div>
+		<div class="ml-bd">
+			<div class="mlb-mid">
+				<div  ng-repeat="link in links" class = "mlb-line">
+					<ul class="mlbm" style="text-align: center;">
+						<li class="mlb-m mlb-m2">{{link.name}}</li>
+						<li class="mlb-m mlb-m2"  style="width:300px;">{{link.url}}</li>
+						<li class="mlb-m mlb-m2">{{link.img}}</li>
+						<li class="mlb-m">{{link.order}}</li>
+						<li class="mlb-m">
+							<a href="#" class="aa" ui-sref="station-info.link-edit({lid:'{{link.id}}'})"
+							 >编辑</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="#" class="aa"  ng-click="del(link.id)">删除</a>
+						</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

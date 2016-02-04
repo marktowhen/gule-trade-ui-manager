@@ -169,7 +169,14 @@ shopbackApp.service('ApiService', function () {
         'logistic':{
             'logisticlist':'http://localhost:8080/api/logistic/express/list',
             'expressinfo':'http://localhost:8080/api/logistic/express/info/:oid/:code/:codeid'
-        }
+        },
+        'link':{    
+            'save':'http://localhost:8080//api/link/save',
+            'updateview':'http://localhost:8080/api/link/updateview/:lid',
+            'update':'http://localhost:8080/api/link//update/:lid',
+            'del':'http://localhost:8080/api/link/del/:lid',
+            'query':'http://localhost:8080/api/link/all/list'
 
-    }
+        }
+             }
 });

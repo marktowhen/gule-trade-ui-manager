@@ -46,28 +46,28 @@ shopbackApp.service('ApiService', function () {
             'current' :'http://localhost:8080/api/manager/current'
         },
         'banner':{
-            'save' :'http://localhost:8080/api/banner/',
-            'refresh' :'http://localhost:8080/api/banner/:ID',
-            'remove' :'http://localhost:8080/api/banner/:ID',
-            'list' :'http://localhost:8080/api/banner/list/:from/:size',
-            'count' :'http://localhost:8080/api/banner/count',
-            'single' :'http://localhost:8080/api/banner/:ID'
+            'save' :'http://localhost:8080/api/statics/banner/',
+            'refresh' :'http://localhost:8080/api/statics/banner/:ID',
+            'remove' :'http://localhost:8080/api/statics/banner/:ID',
+            'list' :'http://localhost:8080/api/statics/banner/list/:from/:size',
+            'count' :'http://localhost:8080/api/statics/banner/count',
+            'single' :'http://localhost:8080/api/statics/banner/:ID'
 
         },
         'helpCenter':{
             'category' : {
-            	'list' : 'http://localhost:8080/api/information/help/center/category/list',
-            	'single' : 'http://localhost:8080/api/information/help/center/category/:id',
-            	'save' :'http://localhost:8080/api/information/help/center/category/',
-            	'refresh' :'http://localhost:8080/api/information/help/center/category/:id',
-            	'remove' :'http://localhost:8080/api/information/help/center/category/:id'
+            	'list' : 'http://localhost:8080/api/statics/help/center/category/list',
+            	'single' : 'http://localhost:8080/api/statics/help/center/category/:id',
+            	'save' :'http://localhost:8080/api/statics/help/center/category/',
+            	'refresh' :'http://localhost:8080/api/statics/help/center/category/:id',
+            	'remove' :'http://localhost:8080/api/statics/help/center/category/:id'
             },
             'detail' : {
-            	'list' : 'http://localhost:8080/api/information/help/center/detail/list/:categoryID',
-            	'single' : 'http://localhost:8080/api/information/help/center/detail/:id',
-            	'save' :'http://localhost:8080/api/information/help/center/detail/',
-            	'refresh' :'http://localhost:8080/api/information/help/center/detail/:id',
-            	'remove' :'http://localhost:8080/api/information/help/center/detail/:id'
+            	'list' : 'http://localhost:8080/api/statics/help/center/detail/list/:categoryID',
+            	'single' : 'http://localhost:8080/api/statics/help/center/detail/:id',
+            	'save' :'http://localhost:8080/api/statics/help/center/detail/',
+            	'refresh' :'http://localhost:8080/api/statics/help/center/detail/:id',
+            	'remove' :'http://localhost:8080/api/statics/help/center/detail/:id'
             }
         },
 
@@ -110,20 +110,20 @@ shopbackApp.service('ApiService', function () {
             'deliverylist':'http://localhost:8080/api/merchant/deliverytype/list'
         },
         'getinformation':{
-            'getSchoolSite':'http://localhost:8080/api/information/sites/:siteid',
-            'getSchoolName':'http://localhost:8080/api/information/sitesSchool/:names',
-            'saveSchool':'http://localhost:8080/api/information/savedetails',
-            'alldetail':'http://localhost:8080/api/information/alldetail',
-            'getMerchantInfo':'http://localhost:8080/api/merchant/info/:mid',
+            'getSchoolSite':'http://localhost:8080/api/statics/information/sites/:siteid',
+            'getSchoolName':'http://localhost:8080/api/statics/information/sitesSchool/:names',
+            'saveSchool':'http://localhost:8080/api/statics/information/savedetails',
+            'alldetail':'http://localhost:8080/api/statics/information/alldetail',
+            'getMerchantInfo':'http://localhost:8080/api/statics/merchant/info/:mid',
             'update':'http://localhost:8080/api/merchant/updatemerchant',
             'save':'http://localhost:8080/api/merchant/savemerchant',
 			 'invoicelist':'http://localhost:8080/api/merchant/invoicetype/list',
             'deliverylist':'http://localhost:8080/api/merchant/deliverytype/list',
-            'deletedetail':'http://localhost:8080/api/information/delete/:id',
-            'updateInfo':'http://localhost:8080/api/information/update',
-            'getInfoById':'http://localhost:8080/api/information/detail/:id',
-            'getInfoByName':'http://localhost:8080/api/information/byname/detail',
-            'maxOrders':'http://localhost:8080/api/information/detail/orders/:id'
+            'deletedetail':'http://localhost:8080/api/statics/information/delete/:id',
+            'updateInfo':'http://localhost:8080/api/statics/information/update',
+            'getInfoById':'http://localhost:8080/api/statics/information/detail/:id',
+            'getInfoByName':'http://localhost:8080/api/statics/information/byname/detail',
+            'maxOrders':'http://localhost:8080/api/statics/information/detail/orders/:id'
 
 
         },
@@ -171,11 +171,11 @@ shopbackApp.service('ApiService', function () {
             'expressinfo':'http://localhost:8080/api/logistic/express/info/:oid/:code/:codeid'
         },
         'link':{    
-            'save':'http://localhost:8080//api/link/save',
-            'updateview':'http://localhost:8080/api/link/updateview/:lid',
-            'update':'http://localhost:8080/api/link//update/:lid',
-            'del':'http://localhost:8080/api/link/del/:lid',
-            'query':'http://localhost:8080/api/link/all/list'
+            'save':'http://localhost:8080/api/statics/link/save',
+            'updateview':'http://localhost:8080/api/statics/link/updateview/:lid',
+            'update':'http://localhost:8080/api/statics/link//update/:lid',
+            'del':'http://localhost:8080/api/statics/link/del/:lid',
+            'query':'http://localhost:8080/api/statics/link/all/list'
 
         }
              }

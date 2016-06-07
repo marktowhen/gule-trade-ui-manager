@@ -88,6 +88,7 @@ shopbackApp.controller('BannerController', function ($scope,$cookies, ConstantSe
 	            			$scope.banner = {};
 	            		}
 	            		$scope.banner.image = data.body;
+	            		console.log($scope.banner.image+"lllll");
 	            	}else{
 	            		 alert($scope, data.message);
 	            	}

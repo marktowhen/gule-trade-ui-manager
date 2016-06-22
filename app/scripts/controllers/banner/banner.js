@@ -65,6 +65,7 @@ shopbackApp.controller('BannerController', function ($scope,$cookies, ConstantSe
 
 
  	$scope.remove = function(id){
+ 		alert(id+"jjj");
  			if(confirm("确定删除吗")){
  				BannerService.remove(id).success(function(data){
  					if(data.code==200){
